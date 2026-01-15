@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Us | FlyTravels</title>
+    
+    <!-- Favicon & Icons -->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+        .contact-hero {
+            padding: 6rem 0 3rem;
+            background: linear-gradient(135deg, rgba(67, 97, 238, 0.1) 0%, rgba(114, 9, 183, 0.1) 100%);
+        }
+        
+        .contact-hero-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .contact-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .contact-hero p {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            margin-bottom: 3rem;
+        }
+        
+        .contact-container {
+            padding: 4rem 0;
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+        
+        .contact-info {
+            background: var(--bg-secondary);
+            padding: 2.5rem;
+            border-radius: var(--radius-xl);
+            border: 1px solid var(--gray-300);
+        }
+        
+        .contact-info h2 {
+            margin-bottom: 2rem;
+            color: var(--text-primary);
+        }
+        
+        .contact-methods {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+        
+        .contact-method {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+            padding: 1.5rem;
+            background: var(--bg-primary);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--gray-300);
+            transition: all var(--transition-normal);
+        }
+        
+        .contact-method:hover {
+            transform: translateY(-3px);
+            border-color: var(--primary);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .contact-method i {
+            font-size: 1.5rem;
+            color: var(--primary);
+            background: rgba(67, 97, 238, 0.1);
+            padding: 1rem;
+            border-radius: var(--radius-full);
+        }
+        
+        .contact-method h4 {
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+        
+        .contact-method p {
+            color: var(--text-secondary);
+            margin: 0;
+        }
+        
+        .contact-method a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .contact-form {
+            background: var(--bg-primary);
+            padding: 2.5rem;
+            border-radius: var(--radius-xl);
+            border: 1px solid var(--gray-300);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .contact-form h2 {
+            margin-bottom: 2rem;
+            color: var(--text-primary);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+        
+        .form-input,
+        .form-textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid var(--gray-300);
+            border-radius: var(--radius-md);
+            font-size: 1rem;
+            transition: all var(--transition-fast);
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            font-family: var(--font-sans);
+        }
+        
+        .form-input:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.1);
+        }
+        
+        .form-textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .contact-btn {
+            width: 100%;
+            padding: 1rem;
+            font-size: 1.125rem;
+        }
+        
+        .faq-section {
+            padding: 4rem 0;
+            background: var(--bg-secondary);
+        }
+        
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            background: var(--bg-primary);
+            border-radius: var(--radius-lg);
+            margin-bottom: 1rem;
+            border: 1px solid var(--gray-300);
+            overflow: hidden;
+        }
+        
+        .faq-question {
+            padding: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+        
+        .faq-question i {
+            transition: transform 0.3s;
+        }
+        
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+        
+        .faq-answer {
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s;
+            color: var(--text-secondary);
+        }
+        
+        .faq-item.active .faq-answer {
+            padding: 0 1.5rem 1.5rem;
+            max-height: 500px;
+        }
+        
+        .map-section {
+            height: 400px;
+            background: var(--gray-200);
+            border-radius: var(--radius-xl);
+            overflow: hidden;
+            margin-top: 4rem;
+        }
+        
+        .map-placeholder {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+        
+        .map-placeholder i {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+        
+        @media (max-width: 992px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+            
+            .contact-hero h1 {
+                font-size: 2.5rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .contact-hero {
+                padding: 4rem 0 2rem;
+            }
+            
+            .contact-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .contact-hero p {
+                font-size: 1.125rem;
+            }
+            
+            .contact-info,
+            .contact-form {
+                padding: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Preloader -->
+    <div class="preloader" id="preloader">
+        <div class="plane-loader">
+            <i class="ri-plane-line"></i>
+        </div>
+        <div class="loader-text">
+            <p class="loading-text">Loading Contact</p>
+            <div class="loading-dots">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header & Navigation -->
+    <header class="header" id="header">
+        <nav class="nav" role="navigation" aria-label="Main Navigation">
+            <div class="nav__container container">
+                <!-- Logo -->
+                <div class="logo">
+                    <a href="index.html" class="logo-link" aria-label="FlyTravels Home">
+                        <img src="assets/logo.png" alt="FlyTravels Logo" class="logo-img" width="40" height="40">
+                        <div class="logo-text">
+                            <span class="logo-main">FlyTravels</span>
+                            <span class="logo-tagline">Journey Beyond Imagination</span>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Main Navigation -->
+                <div class="nav__menu" id="nav-menu">
+                    <ul class="nav__list" role="menubar">
+                        <li class="nav__item" role="none">
+                            <a href="index.html" class="nav__link" role="menuitem">
+                                <i class="ri-home-4-line"></i> <span>Home</span>
+                            </a>
+                        </li>
+                        <li class="nav__item" role="none">
+                            <a href="index.html#services" class="nav__link" role="menuitem">
+                                <i class="ri-service-line"></i> <span>Services</span>
+                            </a>
+                        </li>
+                        <li class="nav__item" role="none">
+                            <a href="explore.html" class="nav__link" role="menuitem">
+                                <i class="ri-map-pin-line"></i> <span>Destinations</span>
+                            </a>
+                        </li>
+                        <li class="nav__item" role="none">
+                            <a href="index.html#offers" class="nav__link" role="menuitem">
+                                <i class="ri-percent-line"></i> <span>Offers</span>
+                            </a>
+                        </li>
+                        <li class="nav__item" role="none">
+                            <a href="index.html#testimonials" class="nav__link" role="menuitem">
+                                <i class="ri-chat-quote-line"></i> <span>Reviews</span>
+                            </a>
+                        </li>
+                        <li class="nav__item" role="none">
+                            <a href="contact.html" class="nav__link active" role="menuitem">
+                                <i class="ri-contacts-line"></i> <span>Contact</span>
+                            </a>
+                        </li>
+                    </ul>
+
+                    <!-- User Actions -->
+                    <div class="nav__actions">
+                        <a href="login.html" class="btn btn-outline" id="login-btn" aria-label="Sign In">
+                            <i class="ri-login-circle-line"></i> <span class="btn-text">Sign In</span>
+                        </a>
+                        <a href="register.html" class="btn btn-primary" id="register-btn" aria-label="Register Free">
+                            <i class="ri-user-add-line"></i> <span class="btn-text">Register Free</span>
+                        </a>
+                        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+                            <i class="ri-sun-line"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Mobile Menu Toggle -->
+                <button class="nav__toggle" id="nav-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-menu">
+                    <i class="ri-menu-line"></i>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Contact Hero -->
+    <section class="contact-hero">
+        <div class="container">
+            <div class="contact-hero-content">
+                <h1>Get in Touch</h1>
+                <p>Have questions or need assistance? Our team is here to help you with all your travel needs. Reach out to us anytime!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Content -->
+    <section class="contact-container">
+        <div class="container">
+            <div class="contact-grid">
+                <!-- Contact Info -->
+                <div class="contact-info">
+                    <h2>Contact Information</h2>
+                    <div class="contact-methods">
+                        <div class="contact-method">
+                            <i class="ri-phone-line"></i>
+                            <div>
+                                <h4>Phone</h4>
+                                <p><a href="tel:+6283832126684">+62 838 3212 6684</a></p>
+                                <p style="margin-top: 0.5rem; font-size: 0.875rem;">Available 24/7</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-method">
+                            <i class="ri-mail-line"></i>
+                            <div>
+                                <h4>Email</h4>
+                                <p><a href="mailto:support@flytravels.com">support@flytravels.com</a></p>
+                                <p><a href="mailto:bookings@flytravels.com">bookings@flytravels.com</a></p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-method">
+                            <i class="ri-map-pin-line"></i>
+                            <div>
+                                <h4>Address</h4>
+                                <p>Jl. Sudirman No. 123<br>Jakarta Selatan, 12190<br>Indonesia</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-method">
+                            <i class="ri-time-line"></i>
+                            <div>
+                                <h4>Business Hours</h4>
+                                <p>Monday - Friday: 9:00 AM - 8:00 PM</p>
+                                <p>Saturday - Sunday: 10:00 AM - 6:00 PM</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="contact-form">
+                    <h2>Send us a Message</h2>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name" class="form-label">Full Name</label>
+                            <input type="text" id="name" class="form-input" placeholder="Your name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email" class="form-label">Email Address</label>
+                            <input type="email" id="email" class="form-input" placeholder="you@example.com" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject" class="form-label">Subject</label>
+                            <input type="text" id="subject" class="form-input" placeholder="How can we help?" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message" class="form-label">Message</label>
+                            <textarea id="message" class="form-textarea" placeholder="Tell us about your travel plans or questions..." required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary contact-btn">
+                            <i class="ri-send-plane-line"></i> Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Map Section -->
+            <div class="map-section">
+                <div class="map-placeholder">
+                    <i class="ri-map-pin-line"></i>
+                    <h3>Our Location</h3>
+                    <p>Jakarta, Indonesia</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Frequently Asked Questions</h2>
+                <p>Find quick answers to common questions</p>
+            </div>
+            
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        How do I book a flight?
+                        <i class="ri-arrow-down-s-line"></i>
+                    </div>
+                    <div class="faq-answer">
+                        You can book flights directly through our website using the booking widget on the homepage. Simply enter your departure and destination cities, select dates, and choose your preferred class.
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        What is your cancellation policy?
+                        <i class="ri-arrow-down-s-line"></i>
+                    </div>
+                    <div class="faq-answer">
+                        Our cancellation policy varies by airline and hotel. Most bookings can be cancelled up to 24 hours before departure with minimal fees. Check your booking confirmation for specific details.
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        How can I get a refund?
+                        <i class="ri-arrow-down-s-line"></i>
+                    </div>
+                    <div class="faq-answer">
+                        Refunds are processed within 7-10 business days after cancellation approval. Please contact our support team with your booking reference number to initiate a refund request.
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Do you offer travel insurance?
+                        <i class="ri-arrow-down-s-line"></i>
+                    </div>
+                    <div class="faq-answer">
+                        Yes! We offer comprehensive travel insurance that covers medical emergencies, trip cancellations, lost luggage, and more. You can add insurance during the booking process.
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        How do I change my booking?
+                        <i class="ri-arrow-down-s-line"></i>
+                    </div>
+                    <div class="faq-answer">
+                        You can modify your booking through your account dashboard or by contacting our support team. Changes may be subject to fees depending on the airline/hotel policy.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <img src="assets/logo.png" alt="FlyTravels" width="50" height="50">
+                        <div>
+                            <h3>FlyTravels</h3>
+                            <p class="logo-tagline">Journey Beyond Imagination</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul role="list">
+                        <li><a href="index.html"><i class="ri-arrow-right-s-line"></i> Home</a></li>
+                        <li><a href="explore.html"><i class="ri-arrow-right-s-line"></i> Destinations</a></li>
+                        <li><a href="index.html#offers"><i class="ri-arrow-right-s-line"></i> Offers</a></li>
+                        <li><a href="contact.html"><i class="ri-arrow-right-s-line"></i> Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Support</h4>
+                    <ul role="list">
+                        <li><a href="contact.html"><i class="ri-arrow-right-s-line"></i> Help Center</a></li>
+                        <li><a href="contact.html"><i class="ri-arrow-right-s-line"></i> FAQ</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 FlyTravels. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top -->
+    <button class="back-to-top" id="back-to-top" aria-label="Back to top">
+        <i class="ri-arrow-up-line"></i>
+    </button>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // FAQ Toggle
+            const faqItems = document.querySelectorAll('.faq-item');
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                question.addEventListener('click', () => {
+                    item.classList.toggle('active');
+                });
+            });
+
+            // Contact Form
+            const contactForm = document.getElementById('contactForm');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    const name = document.getElementById('name').value;
+                    const email = document.getElementById('email').value;
+                    const subject = document.getElementById('subject').value;
+                    const message = document.getElementById('message').value;
+                    
+                    if (!name || !email || !subject || !message) {
+                        alert('Please fill in all fields');
+                        return;
+                    }
+                    
+                    // Simulate form submission
+                    const submitBtn = contactForm.querySelector('button[type="submit"]');
+                    const originalText = submitBtn.innerHTML;
+                    submitBtn.innerHTML = '<i class="ri-loader-4-line animate-spin"></i> Sending...';
+                    submitBtn.disabled = true;
+                    
+                    setTimeout(() => {
+                        submitBtn.innerHTML = originalText;
+                        submitBtn.disabled = false;
+                        
+                        alert(`Thank you, ${name}! Your message has been sent. We'll respond to you at ${email} within 24 hours.`);
+                        contactForm.reset();
+                    }, 1500);
+                });
+            }
+
+            // Remove preloader
+            setTimeout(() => {
+                const preloader = document.getElementById('preloader');
+                if (preloader) {
+                    preloader.style.opacity = '0';
+                    setTimeout(() => {
+                        preloader.style.display = 'none';
+                    }, 500);
+                }
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
