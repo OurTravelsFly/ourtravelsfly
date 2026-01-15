@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="FlyTravels ✈️ | Premium Travel Booking Platform. Book flights, hotels, cruises & car rentals with best prices guaranteed.">
+    <meta name="keywords" content="travel booking, flights, hotels, vacation, tourism, travel agency">
+    <meta name="author" content="FlyTravels">
+    
+    <!-- Open Graph Meta -->
+    <meta property="og:title" content="FlyTravels ✈️ | Premium Travel Booking">
+    <meta property="og:description" content="Your journey begins with FlyTravels. Dream. Discover. Destination.">
+    <meta property="og:image" content="https://ourtravelsfly.github.io/ourtravelsfly/assets/logo.png">
+    <meta property="og:url" content="https://ourtravelsfly.github.io/ourtravelsfly/">
+    <meta property="og:type" content="website">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="FlyTravels ✈️">
+    <meta name="twitter:description" content="Premium Travel Booking Platform">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    <link rel="apple-touch-icon" href="assets/logo.png">
+    
+    <!-- Fonts & Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="animations.css" />
+    
+    <title>FlyTravels ✈️ | Premium Travel Booking Platform</title>
+</head>
+<body>
+    <!-- Preloader -->
+    <div class="preloader" id="preloader">
+        <div class="plane-loader">
+            <i class="ri-plane-line"></i>
+        </div>
+        <div class="loader-text">
+            <p class="loading-text">Preparing your journey</p>
+            <div class="loading-dots">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification Toast -->
+    <div class="toast" id="notification-toast">
+        <div class="toast-icon">
+            <i class="ri-plane-line"></i>
+        </div>
+        <span id="toast-message">Welcome to FlyTravels! ✈️</span>
+        <button class="toast-close" aria-label="Close notification">
+            <i class="ri-close-line"></i>
+        </button>
+    </div>
+
+    <!-- Header & Navigation -->
+    <header class="header" id="header">
+        <!-- Top Announcement Bar -->
+        <div class="announcement-bar">
+            <div class="container">
+                <p><i class="ri-megaphone-fill"></i> <span class="announcement-text">Special Offer: Get 20% off on all international flights! Use code: <strong>FLY20</strong></span></p>
+                <button class="announcement-close" aria-label="Close announcement">
+                    <i class="ri-close-line"></i>
+                </button>
+            </div>
+        </div>
+
+        <nav class="nav" role="navigation" aria-label="Main Navigation">
+            <div class="nav__container container">
+                <!-- Logo -->
+                <div class="logo">
+                    <a href="index.html" class="logo-link" aria-label="FlyTravels Home">
+                        <img src="assets/logo.png" alt="FlyTravels Logo" class="logo-img" width="40" height="40">
+                        <div class="logo-text">
+                            <span class="logo-main">FlyTravels</span>
+                            <span class="logo-tagline">Journey Beyond Imagination</span>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Main Navigation -->
+                <div class="nav__menu" id="nav-menu">
+                    <ul class="nav__list" role="menubar">
+                        <li class="nav__item" role="none">
+                            <a href="index.html" class="nav__link active" role="menuitem">
+                                <i class="ri-home-4-line"></i> <span>Home</span>
+                            </a>
+                        </li>
+                        <li class="nav__item" role="none">
+                            <a href="index.html#services" class="nav__link" role="menuitem">
+                                <i class="ri-service-line"></i> <span>Services</span>
+                            </a>
+                        </li>
+                        <li class="nav__item" role="none">
+                            <a href="explore.html" class="nav__link" role="menuitem">
+                                <i class="ri-map-pin-line"></i> <span>Destinations</span>
+                            </a>
+                        </li>
+                        <li class="nav__item" role="none">
+                            <a href="index.html#offers" class="nav__link" role="menuitem">
+                                <i class="ri-percent-line"></i> <span>Offers</span>
+                            </a>
+                        </li>
+                        <li class="nav__item" role="none">
+                            <a href="index.html#testimonials" class="nav__link" role="menuitem">
+                                <i class="ri-chat-quote-line"></i> <span>Reviews</span>
+                            </a>
+                        </li>
+                        <li class="nav__item" role="none">
+                            <a href="contact.html" class="nav__link" role="menuitem">
+                                <i class="ri-contacts-line"></i> <span>Contact</span>
+                            </a>
+                        </li>
+                    </ul>
+
+                    <!-- User Actions -->
+                    <div class="nav__actions">
+                        <a href="login.html" class="btn btn-outline" id="login-btn" aria-label="Sign In">
+                            <i class="ri-login-circle-line"></i> <span class="btn-text">Sign In</span>
+                        </a>
+                        <a href="register.html" class="btn btn-primary" id="register-btn" aria-label="Register Free">
+                            <i class="ri-user-add-line"></i> <span class="btn-text">Register Free</span>
+                        </a>
+                        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+                            <i class="ri-sun-line"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Mobile Menu Toggle -->
+                <button class="nav__toggle" id="nav-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-menu">
+                    <i class="ri-menu-line"></i>
+                </button>
+            </div>
+        </nav>
+
+        <!-- Hero Section -->
+        <section class="hero" id="home" aria-label="Hero Section">
+            <div class="hero__container container">
+                <!-- Hero Content -->
+                <div class="hero__content">
+                    <div class="hero__badge" aria-label="Award Badge">
+                        <i class="ri-award-fill"></i>
+                        <span>#1 Travel Platform 2026</span>
+                    </div>
+                    
+                    <h1 class="hero__title">
+                        <span class="hero-title-line">Dream Your</span>
+                        <span class="hero-title-line gradient-text">Next Adventure</span>
+                        <span class="hero-title-line">With Us</span>
+                    </h1>
+                    
+                    <p class="hero__subtitle">
+                        Your journey begins with FlyTravels. We create 
+                        <span class="highlight">unforgettable experiences</span> with personalized service and best-price guarantee.
+                    </p>
+                    
+                    <!-- CTA Buttons -->
+                    <div class="hero__cta">
+                        <a href="explore.html" class="btn btn-primary btn-lg">
+                            <i class="ri-compass-3-line"></i> Explore Destinations
+                        </a>
+                        <button class="btn btn-outline btn-lg" id="watch-demo">
+                            <i class="ri-play-circle-line"></i> Watch Demo
+                        </button>
+                    </div>
+                    
+                    <!-- Stats Counter -->
+                    <div class="hero__stats">
+                        <div class="stat">
+                            <h3 data-count="150">0</h3>
+                            <p>Destinations</p>
+                        </div>
+                        <div class="stat-divider"></div>
+                        <div class="stat">
+                            <h3 data-count="50">0</h3>
+                            <p>Partner Airlines</p>
+                        </div>
+                        <div class="stat-divider"></div>
+                        <div class="stat">
+                            <h3 data-count="98">0</h3>
+                            <p>Customer Satisfaction</p>
+                        </div>
+                        <div class="stat-divider"></div>
+                        <div class="stat">
+                            <h3 data-count="24">0</h3>
+                            <p>Support Hours</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Booking Widget -->
+                <div class="booking-widget" role="region" aria-label="Booking Widget">
+                    <div class="booking__tabs" role="tablist" aria-label="Booking Types">
+                        <button class="tab-btn active" data-tab="flights" role="tab" aria-selected="true" aria-controls="flight-form">
+                            <i class="ri-plane-line"></i> Flights
+                        </button>
+                        <button class="tab-btn" data-tab="hotels" role="tab" aria-selected="false" aria-controls="hotel-form">
+                            <i class="ri-hotel-line"></i> Hotels
+                        </button>
+                        <button class="tab-btn" data-tab="packages" role="tab" aria-selected="false" aria-controls="package-form">
+                            <i class="ri-suitcase-line"></i> Packages
+                        </button>
+                    </div>
+
+                    <!-- Flight Booking Form -->
+                    <form class="booking-form active" id="flight-form" role="tabpanel" aria-labelledby="flights">
+                        <div class="form-group">
+                            <label for="trip-type"><i class="ri-route-line"></i> Trip Type</label>
+                            <select id="trip-type" class="form-select" aria-label="Select trip type">
+                                <option value="one-way">One Way</option>
+                                <option value="round">Round Trip</option>
+                                <option value="multi">Multi City</option>
+                            </select>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="from"><i class="ri-flight-takeoff-line"></i> From</label>
+                                <div class="input-with-icon">
+                                    <input type="text" id="from" placeholder="City or Airport" class="form-input" required aria-label="Departure location">
+                                    <i class="ri-map-pin-line"></i>
+                                </div>
+                            </div>
+
+                            <div class="swap-btn">
+                                <button type="button" id="swap-locations" class="swap-locations-btn" aria-label="Swap locations">
+                                    <i class="ri-arrow-left-right-line"></i>
+                                </button>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="to"><i class="ri-flight-land-line"></i> To</label>
+                                <div class="input-with-icon">
+                                    <input type="text" id="to" placeholder="Destination" class="form-input" required aria-label="Arrival location">
+                                    <i class="ri-map-pin-line"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="departure"><i class="ri-calendar-line"></i> Departure</label>
+                                <div class="input-with-icon">
+                                    <input type="date" id="departure" class="form-input" required aria-label="Departure date">
+                                    <i class="ri-calendar-line"></i>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="return"><i class="ri-calendar-2-line"></i> Return</label>
+                                <div class="input-with-icon">
+                                    <input type="date" id="return" class="form-input" aria-label="Return date">
+                                    <i class="ri-calendar-2-line"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="passengers"><i class="ri-user-line"></i> Passengers</label>
+                                <div class="passenger-selector" role="group" aria-label="Passenger selection">
+                                    <button type="button" class="passenger-btn" data-type="adult" data-action="decrease" aria-label="Decrease adult count">-</button>
+                                    <span id="adult-count" aria-live="polite">1</span> Adult
+                                    <button type="button" class="passenger-btn" data-type="adult" data-action="increase" aria-label="Increase adult count">+</button>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="class"><i class="ri-seat-line"></i> Class</label>
+                                <select id="class" class="form-select" aria-label="Select travel class">
+                                    <option value="economy">Economy</option>
+                                    <option value="premium">Premium Economy</option>
+                                    <option value="business">Business</option>
+                                    <option value="first">First Class</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-block btn-search" aria-label="Search flights">
+                            <i class="ri-search-line"></i> Search Flights
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+            <!-- Hero Scroll Indicator -->
+            <div class="hero-scroll-indicator">
+                <a href="#services" class="scroll-down" aria-label="Scroll to services">
+                    <span class="scroll-text">Explore More</span>
+                    <div class="scroll-arrow">
+                        <i class="ri-arrow-down-line"></i>
+                    </div>
+                </a>
+            </div>
+        </section>
+    </header>
+
+    <!-- Quick Features -->
+    <section class="quick-features" aria-label="Quick Features">
+        <div class="container">
+            <div class="feature">
+                <div class="feature-icon">
+                    <i class="ri-shield-check-fill"></i>
+                </div>
+                <h4>Safe Travel</h4>
+                <p>COVID-safe protocols</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">
+                    <i class="ri-24-hours-fill"></i>
+                </div>
+                <h4>24/7 Support</h4>
+                <p>Always here to help</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">
+                    <i class="ri-price-tag-3-fill"></i>
+                </div>
+                <h4>Best Price</h4>
+                <p>Guaranteed lowest rates</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">
+                    <i class="ri-refresh-fill"></i>
+                </div>
+                <h4>Easy Refund</h4>
+                <p>Hassle-free cancellation</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="section services" id="services" aria-labelledby="services-heading">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Our Services</span>
+                <h2 class="section-title" id="services-heading">Everything You Need For Perfect Travel</h2>
+                <p class="section-desc">From flights to luxury stays, we've got you covered with comprehensive travel solutions.</p>
+            </div>
+
+            <div class="services-grid">
+                <!-- Service Card 1 -->
+                <article class="service-card" data-service="flights">
+                    <div class="service-icon">
+                        <i class="ri-plane-line"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Flight Tickets</h3>
+                        <p>Book domestic & international flights with exclusive discounts and flexible options.</p>
+                        <a href="explore.html?service=flights" class="service-link">
+                            Explore <i class="ri-arrow-right-line"></i>
+                        </a>
+                    </div>
+                    <div class="service-badge" aria-label="Popular Service">Popular</div>
+                </article>
+
+                <!-- Service Card 2 -->
+                <article class="service-card" data-service="hotels">
+                    <div class="service-icon">
+                        <i class="ri-hotel-line"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Hotel Booking</h3>
+                        <p>Luxury to budget stays with free cancellation and best price guarantee.</p>
+                        <a href="explore.html?service=hotels" class="service-link">
+                            Explore <i class="ri-arrow-right-line"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Service Card 3 -->
+                <article class="service-card" data-service="cruise">
+                    <div class="service-icon">
+                        <i class="ri-ship-line"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Cruise Packages</h3>
+                        <p>Luxury cruises with all-inclusive amenities and exotic destinations.</p>
+                        <a href="explore.html?service=cruises" class="service-link">
+                            Explore <i class="ri-arrow-right-line"></i>
+                        </a>
+                    </div>
+                    <div class="service-badge" aria-label="New Service">New</div>
+                </article>
+
+                <!-- Service Card 4 -->
+                <article class="service-card" data-service="cars">
+                    <div class="service-icon">
+                        <i class="ri-car-line"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Car Rental</h3>
+                        <p>Best cars at best rates, pick-up anywhere with 24/7 roadside assistance.</p>
+                        <a href="explore.html?service=cars" class="service-link">
+                            Explore <i class="ri-arrow-right-line"></i>
+                        </a>
+                    </div>
+                </article>
+            </div>
+            
+            <!-- Services CTA -->
+            <div class="services-cta">
+                <p>Need something else? We provide visa assistance, travel insurance, and custom packages.</p>
+                <a href="contact.html" class="btn btn-outline">
+                    <i class="ri-customer-service-line"></i> Contact Our Experts
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Destinations -->
+    <section class="section destinations" id="destinations" aria-labelledby="destinations-heading">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Top Destinations</span>
+                <h2 class="section-title" id="destinations-heading">Explore Most Popular Places</h2>
+                <p class="section-desc">Curated experiences for every type of traveler, from adventure seekers to luxury lovers.</p>
+            </div>
+
+            <div class="destinations-grid" id="destinations-container" role="list" aria-label="Popular destinations">
+                <!-- Dynamic content from JavaScript -->
+            </div>
+            
+            <!-- View All Button -->
+            <div class="view-all-container">
+                <a href="explore.html" class="btn btn-outline">
+                    <i class="ri-map-line"></i> View All Destinations
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Special Offers -->
+    <section class="section offers" id="offers" aria-labelledby="offers-heading">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Hot Deals</span>
+                <h2 class="section-title" id="offers-heading">Special Offers & Discounts</h2>
+                <p class="section-desc">Limited time offers for amazing destinations. Book now and save big!</p>
+            </div>
+
+            <div class="offers-slider">
+                <div class="swiper offers-swiper" aria-label="Special offers carousel">
+                    <div class="swiper-wrapper" id="offers-container" role="list">
+                        <!-- Dynamic content from JavaScript -->
+                    </div>
+                    <div class="swiper-pagination" role="navigation" aria-label="Offers pagination"></div>
+                    
+                    <!-- Navigation Buttons -->
+                    <div class="swiper-button-prev" aria-label="Previous offer">
+                        <i class="ri-arrow-left-line"></i>
+                    </div>
+                    <div class="swiper-button-next" aria-label="Next offer">
+                        <i class="ri-arrow-right-line"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Offers CTA -->
+            <div class="offers-cta">
+                <p>Subscribe to our newsletter to get exclusive deals before anyone else!</p>
+                <button class="btn btn-primary" id="subscribe-offers">
+                    <i class="ri-mail-send-line"></i> Get Exclusive Deals
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="section testimonials" id="testimonials" aria-labelledby="testimonials-heading">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Testimonials</span>
+                <h2 class="section-title" id="testimonials-heading">What Our Travelers Say</h2>
+                <p class="section-desc">Real experiences from real travelers who trusted us with their journeys.</p>
+            </div>
+
+            <div class="testimonials-slider">
+                <div class="swiper testimonials-swiper" aria-label="Customer testimonials">
+                    <div class="swiper-wrapper" id="testimonials-container" role="list">
+                        <!-- Dynamic content from JavaScript -->
+                    </div>
+                    <div class="swiper-pagination" role="navigation" aria-label="Testimonials pagination"></div>
+                </div>
+            </div>
+            
+            <!-- Trust Badges -->
+            <div class="trust-badges">
+                <div class="trust-badge">
+                    <i class="ri-shield-check-line"></i>
+                    <span>100% Secure Booking</span>
+                </div>
+                <div class="trust-badge">
+                    <i class="ri-thumb-up-line"></i>
+                    <span>4.8/5 Customer Rating</span>
+                </div>
+                <div class="trust-badge">
+                    <i class="ri-award-line"></i>
+                    <span>Award Winning Service</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter" aria-label="Newsletter Subscription">
+        <div class="container">
+            <div class="newsletter-content">
+                <div class="newsletter-icon">
+                    <i class="ri-send-plane-fill"></i>
+                </div>
+                <h2>Never Miss A Deal!</h2>
+                <p>Subscribe to get exclusive offers, travel inspiration, and early access to flash sales.</p>
+                <form class="newsletter-form" id="newsletter-form">
+                    <div class="input-group">
+                        <input type="email" placeholder="Your email address" required aria-label="Email address">
+                        <button type="submit" class="btn btn-primary" aria-label="Subscribe to newsletter">
+                            Subscribe <i class="ri-send-plane-line"></i>
+                        </button>
+                    </div>
+                    <p class="privacy-note">By subscribing, you agree to our Privacy Policy. You may unsubscribe at any time.</p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" id="contact" role="contentinfo">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <img src="assets/logo.png" alt="FlyTravels" width="50" height="50">
+                        <div>
+                            <h3>FlyTravels</h3>
+                            <p class="logo-tagline">Journey Beyond Imagination</p>
+                        </div>
+                    </div>
+                    <p class="footer-description">Making travel accessible, affordable, and amazing for everyone since 2024.</p>
+                    <div class="social-links" aria-label="Social media links">
+                        <a href="#" aria-label="Facebook">
+                            <i class="ri-facebook-fill"></i>
+                        </a>
+                        <a href="#" aria-label="Instagram">
+                            <i class="ri-instagram-line"></i>
+                        </a>
+                        <a href="#" aria-label="Twitter">
+                            <i class="ri-twitter-x-line"></i>
+                        </a>
+                        <a href="#" aria-label="YouTube">
+                            <i class="ri-youtube-line"></i>
+                        </a>
+                        <a href="#" aria-label="LinkedIn">
+                            <i class="ri-linkedin-fill"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul role="list">
+                        <li><a href="index.html"><i class="ri-arrow-right-s-line"></i> Home</a></li>
+                        <li><a href="index.html#services"><i class="ri-arrow-right-s-line"></i> Services</a></li>
+                        <li><a href="explore.html"><i class="ri-arrow-right-s-line"></i> Destinations</a></li>
+                        <li><a href="index.html#offers"><i class="ri-arrow-right-s-line"></i> Offers</a></li>
+                        <li><a href="index.html#testimonials"><i class="ri-arrow-right-s-line"></i> Reviews</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Support</h4>
+                    <ul role="list">
+                        <li><a href="contact.html"><i class="ri-arrow-right-s-line"></i> Help Center</a></li>
+                        <li><a href="contact.html"><i class="ri-arrow-right-s-line"></i> FAQ</a></li>
+                        <li><a href="contact.html"><i class="ri-arrow-right-s-line"></i> Cancellation Policy</a></li>
+                        <li><a href="contact.html"><i class="ri-arrow-right-s-line"></i> Privacy Policy</a></li>
+                        <li><a href="contact.html"><i class="ri-arrow-right-s-line"></i> Terms of Service</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Contact Us</h4>
+                    <ul class="contact-info" role="list">
+                        <li>
+                            <i class="ri-phone-line"></i>
+                            <div>
+                                <span class="contact-label">Phone</span>
+                                <a href="tel:+6283832126684">+62 838 3212 6684</a>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="ri-mail-line"></i>
+                            <div>
+                                <span class="contact-label">Email</span>
+                                <a href="mailto:support@flytravels.com">support@flytravels.com</a>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="ri-map-pin-line"></i>
+                            <div>
+                                <span class="contact-label">Address</span>
+                                <address>Jakarta, Indonesia</address>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 FlyTravels. All rights reserved. | Made with <i class="ri-heart-fill" aria-label="love"></i> for travelers worldwide.</p>
+                <div class="footer-extras">
+                    <div class="payment-methods" aria-label="Accepted payment methods">
+                        <i class="ri-visa-line" title="Visa"></i>
+                        <i class="ri-mastercard-line" title="Mastercard"></i>
+                        <i class="ri-paypal-line" title="PayPal"></i>
+                        <i class="ri-bank-card-line" title="Bank Transfer"></i>
+                    </div>
+                    <div class="language-selector">
+                        <i class="ri-global-line"></i>
+                        <select aria-label="Select language">
+                            <option value="en">English</option>
+                            <option value="id">Bahasa Indonesia</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top -->
+    <button class="back-to-top" id="back-to-top" aria-label="Back to top">
+        <i class="ri-arrow-up-line"></i>
+    </button>
+
+    <!-- Floating Action Button (Mobile) -->
+    <button class="fab" id="fab-chat" aria-label="Chat with us">
+        <i class="ri-chat-3-line"></i>
+    </button>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="data.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
