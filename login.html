@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login | FlyTravels</title>
+    
+    <!-- Favicon & Icons -->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+        .auth-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            background: linear-gradient(135deg, rgba(67, 97, 238, 0.1) 0%, rgba(114, 9, 183, 0.1) 100%);
+        }
+        
+        .auth-card {
+            background: var(--bg-primary);
+            border-radius: var(--radius-2xl);
+            padding: 3rem;
+            width: 100%;
+            max-width: 450px;
+            box-shadow: var(--shadow-2xl);
+            border: 1px solid var(--gray-300);
+        }
+        
+        .auth-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+        
+        .auth-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .auth-logo img {
+            height: 50px;
+            width: auto;
+        }
+        
+        .auth-title {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+        
+        .auth-subtitle {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+        
+        .auth-form .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid var(--gray-300);
+            border-radius: var(--radius-md);
+            font-size: 1rem;
+            transition: all var(--transition-fast);
+            background: var(--bg-primary);
+            color: var(--text-primary);
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.1);
+        }
+        
+        .password-toggle {
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            cursor: pointer;
+        }
+        
+        .password-wrapper {
+            position: relative;
+        }
+        
+        .remember-forgot {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+        
+        .remember-me {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .forgot-link {
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 0.875rem;
+        }
+        
+        .auth-btn {
+            width: 100%;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .divider {
+            display: flex;
+            align-items: center;
+            margin: 2rem 0;
+            color: var(--text-secondary);
+        }
+        
+        .divider::before,
+        .divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--gray-300);
+        }
+        
+        .divider span {
+            padding: 0 1rem;
+            font-size: 0.875rem;
+        }
+        
+        .social-login {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .social-btn {
+            flex: 1;
+            padding: 0.875rem;
+            border: 2px solid var(--gray-300);
+            border-radius: var(--radius-md);
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+        }
+        
+        .social-btn:hover {
+            border-color: var(--primary);
+            transform: translateY(-2px);
+        }
+        
+        .auth-footer {
+            text-align: center;
+            margin-top: 2rem;
+            color: var(--text-secondary);
+        }
+        
+        .auth-footer a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        @media (max-width: 768px) {
+            .auth-card {
+                padding: 2rem;
+            }
+            
+            .social-login {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Preloader -->
+    <div class="preloader" id="preloader">
+        <div class="plane-loader">
+            <i class="ri-plane-line"></i>
+        </div>
+        <div class="loader-text">
+            <p class="loading-text">Welcome Back</p>
+            <div class="loading-dots">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Auth Container -->
+    <div class="auth-container">
+        <div class="auth-card">
+            <!-- Header -->
+            <div class="auth-header">
+                <div class="auth-logo">
+                    <img src="assets/logo.png" alt="FlyTravels">
+                    <div>
+                        <h2 class="auth-title">FlyTravels</h2>
+                        <p class="logo-tagline">Journey Beyond Imagination</p>
+                    </div>
+                </div>
+                <h1 class="auth-title">Welcome Back</h1>
+                <p class="auth-subtitle">Sign in to your account to continue your journey</p>
+            </div>
+
+            <!-- Login Form -->
+            <form class="auth-form" id="login-form">
+                <div class="form-group">
+                    <label for="email" class="form-label">Email Address</label>
+                    <input type="email" id="email" class="form-input" placeholder="you@example.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="password" class="form-label">Password</label>
+                    <div class="password-wrapper">
+                        <input type="password" id="password" class="form-input" placeholder="Enter your password" required>
+                        <button type="button" class="password-toggle" id="toggle-password">
+                            <i class="ri-eye-line"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="remember-forgot">
+                    <label class="remember-me">
+                        <input type="checkbox" id="remember-me">
+                        <span>Remember me</span>
+                    </label>
+                    <a href="#" class="forgot-link">Forgot password?</a>
+                </div>
+
+                <button type="submit" class="btn btn-primary auth-btn">
+                    <i class="ri-login-circle-line"></i> Sign In
+                </button>
+
+                <div class="divider">
+                    <span>Or continue with</span>
+                </div>
+
+                <!-- Social Login -->
+                <div class="social-login">
+                    <button type="button" class="social-btn" onclick="socialLogin('google')">
+                        <i class="ri-google-fill"></i> Google
+                    </button>
+                    <button type="button" class="social-btn" onclick="socialLogin('facebook')">
+                        <i class="ri-facebook-fill"></i> Facebook
+                    </button>
+                </div>
+
+                <!-- Sign Up Link -->
+                <div class="auth-footer">
+                    <p>Don't have an account? <a href="register.html">Sign up now</a></p>
+                    <p style="margin-top: 1rem;"><a href="index.html"><i class="ri-arrow-left-line"></i> Back to home</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Toggle password visibility
+            const togglePassword = document.getElementById('toggle-password');
+            const passwordInput = document.getElementById('password');
+            
+            if (togglePassword && passwordInput) {
+                togglePassword.addEventListener('click', function() {
+                    const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+                    passwordInput.setAttribute('type', type);
+                    this.innerHTML = type === 'password' ? '<i class="ri-eye-line"></i>' : '<i class="ri-eye-off-line"></i>';
+                });
+            }
+
+            // Handle form submission
+            const loginForm = document.getElementById('login-form');
+            if (loginForm) {
+                loginForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    const email = document.getElementById('email').value;
+                    const password = document.getElementById('password').value;
+                    
+                    // Simple validation
+                    if (!email || !password) {
+                        alert('Please fill in all fields');
+                        return;
+                    }
+                    
+                    // Simulate login process
+                    const submitBtn = loginForm.querySelector('button[type="submit"]');
+                    const originalText = submitBtn.innerHTML;
+                    submitBtn.innerHTML = '<i class="ri-loader-4-line animate-spin"></i> Signing In...';
+                    submitBtn.disabled = true;
+                    
+                    setTimeout(() => {
+                        submitBtn.innerHTML = originalText;
+                        submitBtn.disabled = false;
+                        
+                        // In a real app, this would be an API call
+                        // For demo, show success and redirect
+                        alert('Login successful! Welcome back to FlyTravels.');
+                        window.location.href = 'index.html';
+                    }, 1500);
+                });
+            }
+
+            // Remove preloader
+            setTimeout(() => {
+                const preloader = document.getElementById('preloader');
+                if (preloader) {
+                    preloader.style.opacity = '0';
+                    setTimeout(() => {
+                        preloader.style.display = 'none';
+                    }, 500);
+                }
+            }, 1000);
+        });
+
+        function socialLogin(provider) {
+            alert(`This would connect to ${provider} authentication. In production, this would redirect to OAuth login.`);
+            // In real app: window.location.href = `/auth/${provider}`;
+        }
+    </script>
+</body>
+</html>
