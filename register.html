@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register | FlyTravels</title>
+    
+    <!-- Favicon & Icons -->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+        /* Reuse styles from login page */
+        .auth-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            background: linear-gradient(135deg, rgba(67, 97, 238, 0.1) 0%, rgba(114, 9, 183, 0.1) 100%);
+        }
+        
+        .auth-card {
+            background: var(--bg-primary);
+            border-radius: var(--radius-2xl);
+            padding: 3rem;
+            width: 100%;
+            max-width: 500px;
+            box-shadow: var(--shadow-2xl);
+            border: 1px solid var(--gray-300);
+        }
+        
+        .auth-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+        
+        .auth-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .auth-logo img {
+            height: 50px;
+            width: auto;
+        }
+        
+        .auth-title {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+        
+        .auth-subtitle {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+        
+        .auth-form .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid var(--gray-300);
+            border-radius: var(--radius-md);
+            font-size: 1rem;
+            transition: all var(--transition-fast);
+            background: var(--bg-primary);
+            color: var(--text-primary);
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.1);
+        }
+        
+        .password-toggle {
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            cursor: pointer;
+        }
+        
+        .password-wrapper {
+            position: relative;
+        }
+        
+        .terms-check {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            margin: 2rem 0;
+        }
+        
+        .terms-check input {
+            margin-top: 0.25rem;
+        }
+        
+        .terms-check label {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+        
+        .terms-check a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+        
+        .auth-btn {
+            width: 100%;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .divider {
+            display: flex;
+            align-items: center;
+            margin: 2rem 0;
+            color: var(--text-secondary);
+        }
+        
+        .divider::before,
+        .divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--gray-300);
+        }
+        
+        .divider span {
+            padding: 0 1rem;
+            font-size: 0.875rem;
+        }
+        
+        .social-login {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .social-btn {
+            flex: 1;
+            padding: 0.875rem;
+            border: 2px solid var(--gray-300);
+            border-radius: var(--radius-md);
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+        }
+        
+        .social-btn:hover {
+            border-color: var(--primary);
+            transform: translateY(-2px);
+        }
+        
+        .auth-footer {
+            text-align: center;
+            margin-top: 2rem;
+            color: var(--text-secondary);
+        }
+        
+        .auth-footer a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .strength-meter {
+            margin-top: 0.5rem;
+        }
+        
+        .strength-bars {
+            display: flex;
+            gap: 2px;
+            margin-bottom: 0.25rem;
+        }
+        
+        .strength-bar {
+            flex: 1;
+            height: 4px;
+            background: var(--gray-300);
+            border-radius: 2px;
+            transition: background-color 0.3s;
+        }
+        
+        .strength-text {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+        }
+        
+        @media (max-width: 768px) {
+            .auth-card {
+                padding: 2rem;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .social-login {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Preloader -->
+    <div class="preloader" id="preloader">
+        <div class="plane-loader">
+            <i class="ri-plane-line"></i>
+        </div>
+        <div class="loader-text">
+            <p class="loading-text">Creating Your Account</p>
+            <div class="loading-dots">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Auth Container -->
+    <div class="auth-container">
+        <div class="auth-card">
+            <!-- Header -->
+            <div class="auth-header">
+                <div class="auth-logo">
+                    <img src="assets/logo.png" alt="FlyTravels">
+                    <div>
+                        <h2 class="auth-title">FlyTravels</h2>
+                        <p class="logo-tagline">Journey Beyond Imagination</p>
+                    </div>
+                </div>
+                <h1 class="auth-title">Create Account</h1>
+                <p class="auth-subtitle">Join FlyTravels and start your journey today</p>
+            </div>
+
+            <!-- Registration Form -->
+            <form class="auth-form" id="register-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="first-name" class="form-label">First Name</label>
+                        <input type="text" id="first-name" class="form-input" placeholder="John" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="last-name" class="form-label">Last Name</label>
+                        <input type="text" id="last-name" class="form-input" placeholder="Doe" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="email" class="form-label">Email Address</label>
+                    <input type="email" id="email" class="form-input" placeholder="you@example.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone" class="form-label">Phone Number</label>
+                    <input type="tel" id="phone" class="form-input" placeholder="+62 812 3456 7890" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="password" class="form-label">Password</label>
+                    <div class="password-wrapper">
+                        <input type="password" id="password" class="form-input" placeholder="Create a strong password" required>
+                        <button type="button" class="password-toggle" id="toggle-password">
+                            <i class="ri-eye-line"></i>
+                        </button>
+                    </div>
+                    <div class="strength-meter">
+                        <div class="strength-bars">
+                            <div class="strength-bar" id="strength-1"></div>
+                            <div class="strength-bar" id="strength-2"></div>
+                            <div class="strength-bar" id="strength-3"></div>
+                            <div class="strength-bar" id="strength-4"></div>
+                        </div>
+                        <div class="strength-text" id="strength-text">Password strength</div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="confirm-password" class="form-label">Confirm Password</label>
+                    <div class="password-wrapper">
+                        <input type="password" id="confirm-password" class="form-input" placeholder="Confirm your password" required>
+                        <button type="button" class="password-toggle" id="toggle-confirm-password">
+                            <i class="ri-eye-line"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="terms-check">
+                    <input type="checkbox" id="terms" required>
+                    <label for="terms">
+                        I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>. 
+                        I also agree to receive marketing communications from FlyTravels.
+                    </label>
+                </div>
+
+                <button type="submit" class="btn btn-primary auth-btn">
+                    <i class="ri-user-add-line"></i> Create Account
+                </button>
+
+                <div class="divider">
+                    <span>Or sign up with</span>
+                </div>
+
+                <!-- Social Sign Up -->
+                <div class="social-login">
+                    <button type="button" class="social-btn" onclick="socialSignUp('google')">
+                        <i class="ri-google-fill"></i> Google
+                    </button>
+                    <button type="button" class="social-btn" onclick="socialSignUp('facebook')">
+                        <i class="ri-facebook-fill"></i> Facebook
+                    </button>
+                </div>
+
+                <!-- Login Link -->
+                <div class="auth-footer">
+                    <p>Already have an account? <a href="login.html">Sign in here</a></p>
+                    <p style="margin-top: 1rem;"><a href="index.html"><i class="ri-arrow-left-line"></i> Back to home</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Toggle password visibility
+            const togglePassword = document.getElementById('toggle-password');
+            const toggleConfirmPassword = document.getElementById('toggle-confirm-password');
+            const passwordInput = document.getElementById('password');
+            const confirmPasswordInput = document.getElementById('confirm-password');
+            
+            function togglePasswordVisibility(input, toggleBtn) {
+                const type = input.getAttribute('type') === 'password' ? 'text' : 'password';
+                input.setAttribute('type', type);
+                toggleBtn.innerHTML = type === 'password' ? '<i class="ri-eye-line"></i>' : '<i class="ri-eye-off-line"></i>';
+            }
+            
+            if (togglePassword && passwordInput) {
+                togglePassword.addEventListener('click', () => togglePasswordVisibility(passwordInput, togglePassword));
+            }
+            
+            if (toggleConfirmPassword && confirmPasswordInput) {
+                toggleConfirmPassword.addEventListener('click', () => togglePasswordVisibility(confirmPasswordInput, toggleConfirmPassword));
+            }
+
+            // Password strength checker
+            const passwordStrengthBars = [
+                document.getElementById('strength-1'),
+                document.getElementById('strength-2'),
+                document.getElementById('strength-3'),
+                document.getElementById('strength-4')
+            ];
+            const strengthText = document.getElementById('strength-text');
+            
+            function checkPasswordStrength(password) {
+                let strength = 0;
+                
+                // Length check
+                if (password.length >= 8) strength++;
+                
+                // Lowercase check
+                if (/[a-z]/.test(password)) strength++;
+                
+                // Uppercase check
+                if (/[A-Z]/.test(password)) strength++;
+                
+                // Number check
+                if (/[0-9]/.test(password)) strength++;
+                
+                // Special character check
+                if (/[^A-Za-z0-9]/.test(password)) strength++;
+                
+                // Update UI
+                passwordStrengthBars.forEach((bar, index) => {
+                    if (index < strength) {
+                        bar.style.backgroundColor = getStrengthColor(strength);
+                    } else {
+                        bar.style.backgroundColor = 'var(--gray-300)';
+                    }
+                });
+                
+                strengthText.textContent = getStrengthText(strength);
+                strengthText.style.color = getStrengthColor(strength);
+            }
+            
+            function getStrengthColor(strength) {
+                switch(strength) {
+                    case 0:
+                    case 1:
+                        return '#ef4444'; // red
+                    case 2:
+                        return '#f59e0b'; // orange
+                    case 3:
+                        return '#10b981'; // green
+                    case 4:
+                    case 5:
+                        return '#3b82f6'; // blue
+                    default:
+                        return 'var(--text-secondary)';
+                }
+            }
+            
+            function getStrengthText(strength) {
+                switch(strength) {
+                    case 0:
+                    case 1:
+                        return 'Very Weak';
+                    case 2:
+                        return 'Weak';
+                    case 3:
+                        return 'Good';
+                    case 4:
+                        return 'Strong';
+                    case 5:
+                        return 'Very Strong';
+                    default:
+                        return 'Password strength';
+                }
+            }
+            
+            if (passwordInput) {
+                passwordInput.addEventListener('input', function() {
+                    checkPasswordStrength(this.value);
+                });
+            }
+
+            // Handle form submission
+            const registerForm = document.getElementById('register-form');
+            if (registerForm) {
+                registerForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // Get form values
+                    const firstName = document.getElementById('first-name').value;
+                    const lastName = document.getElementById('last-name').value;
+                    const email = document.getElementById('email').value;
+                    const phone = document.getElementById('phone').value;
+                    const password = document.getElementById('password').value;
+                    const confirmPassword = document.getElementById('confirm-password').value;
+                    const terms = document.getElementById('terms').checked;
+                    
+                    // Validation
+                    if (!firstName || !lastName || !email || !phone || !password || !confirmPassword) {
+                        alert('Please fill in all fields');
+                        return;
+                    }
+                    
+                    if (!terms) {
+                        alert('Please agree to the terms and conditions');
+                        return;
+                    }
+                    
+                    if (password !== confirmPassword) {
+                        alert('Passwords do not match');
+                        return;
+                    }
+                    
+                    if (password.length < 8) {
+                        alert('Password must be at least 8 characters long');
+                        return;
+                    }
+                    
+                    // Simulate registration process
+                    const submitBtn = registerForm.querySelector('button[type="submit"]');
+                    const originalText = submitBtn.innerHTML;
+                    submitBtn.innerHTML = '<i class="ri-loader-4-line animate-spin"></i> Creating Account...';
+                    submitBtn.disabled = true;
+                    
+                    setTimeout(() => {
+                        submitBtn.innerHTML = originalText;
+                        submitBtn.disabled = false;
+                        
+                        // In a real app, this would be an API call
+                        // For demo, show success and redirect
+                        alert(`Welcome ${firstName}! Your account has been created successfully.`);
+                        window.location.href = 'index.html';
+                    }, 2000);
+                });
+            }
+
+            // Remove preloader
+            setTimeout(() => {
+                const preloader = document.getElementById('preloader');
+                if (preloader) {
+                    preloader.style.opacity = '0';
+                    setTimeout(() => {
+                        preloader.style.display = 'none';
+                    }, 500);
+                }
+            }, 1000);
+        });
+
+        function socialSignUp(provider) {
+            alert(`This would connect to ${provider} authentication. In production, this would redirect to OAuth sign up.`);
+            // In real app: window.location.href = `/auth/${provider}/signup`;
+        }
+    </script>
+</body>
+</html>
